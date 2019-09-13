@@ -3,6 +3,23 @@ image: clojure:lein
 before_script: 
   - lein deps
 
-test:
+coverage:
+  stage: test
   script:
     - lein cloverage
+  artifacts:
+    paths:
+      - target/coverage/
+
+pages:
+  stage: deploy
+  dependencies:
+    - test
+  script:
+    - mv target/coverage/ public/
+  artifacts:
+    paths:
+      - public
+    expire_in: 30 days
+  only:
+    - master
