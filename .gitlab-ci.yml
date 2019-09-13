@@ -14,7 +14,7 @@ coverage:
 pages:
   stage: deploy
   dependencies:
-    - test
+    - coverage
   script:
     - mv target/coverage/ public/
   artifacts:
