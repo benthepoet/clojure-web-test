@@ -4,17 +4,17 @@ coverage:
   stage: test
   script:
     - lein deps
-    - lein cloverage
+    - lein cloverage -o coverage
   artifacts:
     paths:
-      - target/coverage/
+      - coverage/
 
 pages:
   stage: deploy
   dependencies:
     - coverage
   script:
-    - mv target/coverage/ public/
+    - mv coverage/ public/
   artifacts:
     paths:
       - public
