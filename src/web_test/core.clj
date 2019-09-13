@@ -5,8 +5,8 @@
   [request]
   (let [method (:request-method request)
         path (:uri request)
-        route (list method path)]
+        route [method path]]
     (case route
-      ((:get "/")) (r/response "Home")
-      ((:post "/login")) (r/response "Login")
+      [:get "/"] (r/response "Home")
+      [:post "/login"] (r/response "Login")
       (r/not-found "Not Found"))))
