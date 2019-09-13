@@ -1,11 +1,9 @@
 image: clojure:lein
 
-before_script: 
-  - lein deps
-
 coverage:
   stage: test
   script:
+    - lein deps
     - lein cloverage
   artifacts:
     paths:
