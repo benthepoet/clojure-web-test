@@ -1,0 +1,8 @@
+image: clojure:lein
+
+before_script: 
+  - lein deps
+
+test:
+  script:
+    - lein test
