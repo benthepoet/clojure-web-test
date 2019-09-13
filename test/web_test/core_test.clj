@@ -11,6 +11,12 @@
       (is (status-ok? response))
       (is (= "Home" (:body response))))))
 
+(deftest route-login
+  (testing "Match the login route."
+    (let [response (handler {:request-method :post :uri "/login"})]
+      (is (status-ok? response))
+      (is (= "Login" (:body response))))))
+
 (deftest route-not-found
   (testing "Fallback when no route is found."
     (let [response (handler {:request-method :get :uri "/random"})]
